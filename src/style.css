@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f5f5f5;
+}
+
+/* النافبار */
+.navbar {
+  width: 100%;
+  padding: 18px 50px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  direction: rtl;
+
+  /* التدرج الأنثوي */
+  background: linear-gradient(
+    to bottom,
+    rgba(240, 179, 203, 0.8),
+    rgba(220, 190, 200, 0.4),
+    rgba(220, 190, 200, 0.4),
+    transparent
+  );
+
+  /* تمويه */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  /* ❌ بدون خطوط أو ظل */
+  border: none;
+ 
+
+  position: relative; /* بدل fixed */
+}
+
+
+/* الروابط */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  transition: 0.3s;
+  position: relative;
+}
+
+
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff9800;
+}
+.about {
+  padding: 80px 10%;
+  background-color: #fafafa;
+}
+
+/* 🔝 الجزء العلوي والسفلي */
+.about-top,
+.about-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 80px;
+}
+
+/* 🔁 عكس الترتيب تحت */
+.about-bottom {
+  flex-direction: row-reverse;
+}
+
+/* 📝 النص */
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 34px;
+  margin-bottom: 15px;
+  color: #222;
+  font-weight: 600;
+}
+
+.about-text p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* 🖼 الصور */
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  object-fit: cover;
+
+  /* ✨ تأثيرات */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* 💫 Hover */
+.about-image img:hover {
+  transform: scale(1.05);
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .about-top,
+  .about-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-bottom {
+    flex-direction: column;
+  }
+
+  .about-text h2 {
+    font-size: 28px;
+  }
+
+  .about-text p {
+    font-size: 16px;
+  }
+}
+.home {
+  padding: 60px;
+  text-align: center;
+  background-image: url("nadra1.jpg"); /* Pfad zu deinem Bild */
+  background-size: cover;   /* Bild füllt den Container */
+  background-position: center; /* zentriert */
+  background-repeat: no-repeat; /* kein Wiederholen */
+  height: 900px; /* Höhe des Containers anpassen */
+}
+.footer {
+    background: #f4dcdc;
+    color: white;
+    padding: 80px 60px;
+}
+
+/* Container */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* LEFT */
+.footer-left {
+    max-width: 250px;
+}
+
+.logo {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* CENTER */
+.footer-center {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-center a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-center a:hover {
+    color: #ff6f91;
+}
+
+/* RIGHT */
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-right a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-right a:hover {
+    color: #ff9472;
+}
+
+/* COPYRIGHT */
+.footer p {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    opacity: 0.7;
+}

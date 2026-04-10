@@ -1,0 +1,36 @@
+.beauty {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 260px;
+  padding: 40px 20px;
+  border-radius: 16px;
+  border: 1px solid #eee;
+  background: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Hover elegant */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #777;
+}
