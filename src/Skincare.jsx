@@ -1,43 +1,29 @@
 import { Link } from "react-router-dom";
-import "./skincare.css";
+import "./Skincare.css";
 import skincare from "./skincare.json";
 
 const Skincare = () => {
-    return (
-        <section className="skincare-container">
+  return (
+    <section className="skincare-container">
+      {skincare.map((item) => (
+        <div key={item.id} className="skincare-card">
+          <div className="skincare-content">
+            <h3>{item.name}</h3>
 
-            {skincare.map((item) => (
-                <div key={item.id} className="skincare-card">
+            <p className="content">{item.content}</p>
 
-                    <div className="skincare-content">
-                        <h3>{item.name}</h3>
+            <p className="duration">⏱ {item.duration}</p>
 
-                        {/* content */}
-                        <p className="content">
-                            {item.content}
-                        </p>
+            <p className="price">{item.price} €</p>
 
-                        {/* duration + price تحت content */}
-                        <p className="duration">
-                            ⏱ {item.duration}
-                        </p>
-
-                        <p className="price">
-                            {item.price} €
-                        </p>
-
-                        <Link to="/contact">
-                            <button className="termine-button">
-                                احجز الآن
-                            </button>
-                        </Link>
-                    </div>
-
-                </div>
-            ))}
-
-        </section>
-    );
+            <Link to="/contact">
+              <button className="termine-button">احجز الآن</button>
+            </Link>
+          </div>
+        </div>
+      ))}
+    </section>
+  );
 };
 
 export default Skincare;

@@ -1,94 +1,100 @@
 .Laser {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 50px 20px;
-    background-color: #fdfdfd; /* sehr hell, clean */
-    font-family: 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 50px 20px;
+
+  font-family: "Helvetica Neue", sans-serif;
+  background: transparent;
 }
 
 /* Basis-Card */
 .laser-card {
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    overflow: hidden;
-    max-width: 320px;
-    width: 100%;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  max-width: 320px;
+  width: 100%;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #f9dede, #ffffff, #f9eddd);
 }
 
 /* Hover-Effekt */
 .laser-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 /* Bild */
 .laser-card img {
-    width: 100%;
-    height: 230px;
+  width: 100%;
+  height: 230px;
 }
 
 /* Inhalt */
 .Laser-content {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
 }
 
 /* Titel */
 .Laser-content h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #222222;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #222222;
 }
 
 /* Kurzbeschreibung */
 .Laser-content p {
-    font-size: 1rem;
-    color: #555555;
-    line-height: 1.5;
+  font-size: 1rem;
+  color: #555555;
+  line-height: 1.5;
 }
 
 /* Button */
 .termine-button {
-    margin-top: 10px;
-    padding: 12px 30px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-radius: 30px;
-    text-decoration: none;
-    color: #fff;
-    background-color: #6c63ff; /* elegante Akzentfarbe */
-    transition: background-color 0.3s, transform 0.3s;
-    border: none; /* wichtig für button */
-    cursor: pointer;
+  margin-top: 10px;
+  padding: 12px 30px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #6c63ff; /* elegante Akzentfarbe */
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+  border: none; /* wichtig für button */
+  cursor: pointer;
 }
 
 .termine-button:hover {
-    background-color: #5848c2;
-    transform: scale(1.05);
+  background-color: #5848c2;
+  transform: scale(1.05);
 }
 
 /* Optionale Akzentfarben nach Geschlecht */
 .laser-card.frauen .termine-button {
-    background-color: #ff6b81;
+  background-color: #ff6b81;
 }
 
 .laser-card.frauen .termine-button:hover {
-    background-color: #e6556b;
+  background-color: #e6556b;
 }
 
 .laser-card.maenner .termine-button {
-    background-color: #4a90e2;
+  background-color: #4a90e2;
 }
 
 .laser-card.maenner .termine-button:hover {
-    background-color: #3573c2;
+  background-color: #3573c2;
 }

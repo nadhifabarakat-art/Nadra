@@ -10,7 +10,9 @@
   margin-top: 40px;
   flex-wrap: wrap;
 }
-
+h1 {
+  color: #c9a66b;
+}
 .card {
   width: 260px;
   padding: 40px 20px;
@@ -19,12 +21,14 @@
   background: white;
   cursor: pointer;
   transition: 0.3s;
+  background: linear-gradient(to bottom, #ece2e2, #ffffff, #f3e0c8);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.7);
 }
 
 /* Hover elegant */
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .card h2 {

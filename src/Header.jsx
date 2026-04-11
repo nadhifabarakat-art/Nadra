@@ -1,31 +1,31 @@
 import { NavLink } from "react-router-dom";
-
+import "./Header.css";
 const Header = () => {
-    return (
-        <header className="navbar" >
-            <nav>
-                <ul className="nav-link">
-                    <li>
-                        <NavLink to="/">Home</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/about">About</NavLink>
+  return (
+    <header className="navbar">
+      <img src="/nadra1.png" className="nav-logo" />
+      <nav>
+        <ul className="nav-links">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/Beauty">Beauty</NavLink>
+          </li>
+          <li>
+            <NavLink to="/offers">Offers</NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">About</NavLink>
+          </li>
 
-                    </li>
+          <li>
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
-                    <li>
-                        <NavLink to="/Beauty">Beauty</NavLink>
-
-                    </li>
-
-                    <li>
-                        <NavLink to="/contact">Contact</NavLink>
-
-                    </li>
-                </ul>
-            </nav>
-        </header>
-    );
-}
-
-export default Header; 
+export default Header;
