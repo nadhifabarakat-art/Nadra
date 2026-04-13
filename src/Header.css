@@ -20,12 +20,12 @@
 }
 .nav-links a {
   text-decoration: none;
-  color: #c9a66b; /* ذهبي */
+  color: #c9a66b;
   font-size: 16px;
   transition: 0.3s;
   display: inline-block;
 }
 .nav-links a:hover {
-  color: #d4a5a5; /* زهري */
+  color: #d4a5a5;
   transform: scale(1.1);
 }

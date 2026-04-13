@@ -24,8 +24,6 @@ h1 {
   background: linear-gradient(to bottom, #ece2e2, #ffffff, #f3e0c8);
   box-shadow: 0 8px 20px rgba(212, 175, 55, 0.7);
 }
-
-/* Hover elegant */
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);

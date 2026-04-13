@@ -1,12 +1,28 @@
 import { Link } from "react-router-dom";
 import "./Skincare.css";
-import skincare from "./skincare.json";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Skincare = () => {
+  const [skincare, setSkincare] = useState([]);
+
+  const getSkincare = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/skincare");
+      setSkincare(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getSkincare();
+  }, []);
+
   return (
     <section className="skincare-container">
       {skincare.map((item) => (
-        <div key={item.id} className="skincare-card">
+        <div key={item._id || item.id} className="skincare-card">
           <div className="skincare-content">
             <h3>{item.name}</h3>
 

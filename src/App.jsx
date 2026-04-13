@@ -5,7 +5,7 @@ import Laser from "./Laser";
 import Offers from "./Offers";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
-
+import "./App.css";
 import Beauty from "./Beauty.jsx";
 import Skincare from "./Skincare.jsx";
 

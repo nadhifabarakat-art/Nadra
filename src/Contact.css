@@ -2,11 +2,8 @@
   padding: 50px 20px;
   background: #f9f9f9;
   min-height: 100vh;
-  font-family: "Arial", sans-serif;
   background: transparent;
 }
-
-/* الكونتينر العام */
 .contact-container {
   display: flex;
   justify-content: space-between;
@@ -15,8 +12,6 @@
   margin: auto;
   flex-wrap: wrap;
 }
-
-/* القسم اليسار */
 .contact-left {
   flex: 1;
   background: linear-gradient(to bottom, #eed8d8, #ffffff, #f1d5b1);
@@ -26,13 +21,11 @@
   padding-left: 40px;
   padding-right: 60px;
 }
-
 .contact-left h1 {
   margin-bottom: 10px;
   color: #c9a66b;
   text-align: center;
 }
-
 .contact-left p {
   margin-bottom: 25px;
   color: #666;
@@ -41,8 +34,6 @@
 p {
   text-align: center;
 }
-
-/* الفورم */
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -54,13 +45,11 @@ p {
   transition: 0.3s;
   font-size: 14px;
 }
-
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: #ff7aa2;
   box-shadow: 0 0 5px rgba(255, 122, 162, 0.4);
 }
-
 .suche {
   display: flex;
   gap: 20px;
@@ -68,7 +57,6 @@ p {
   margin-right: 60px;
   font-size: 16px;
 }
-
 .contact-form button {
   width: 100%;
   padding: 12px;
@@ -80,19 +68,16 @@ p {
   cursor: pointer;
   transition: 0.3s;
 }
-
 .contact-form button:hover {
   transform: scale(1.05);
   opacity: 0.9;
 }
-
 .contact-lift {
   flex: 0.8;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
 .Uhr,
 .social {
   background: linear-gradient(to bottom, #eed8d8, #ffffff, #f1d5b1);
@@ -100,7 +85,6 @@ p {
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(212, 175, 55, 0.7);
 }
-
 .Uhr h4,
 .social h4 {
   margin-bottom: 10px;
