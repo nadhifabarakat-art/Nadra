@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "./Header.css";
+import "../style/Header.css";
 const Header = () => {
   return (
     <header className="navbar">
@@ -24,6 +24,9 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+      <div className="Host">
+        <NavLink to="/Admin">Admin</NavLink>
+      </div>
     </header>
   );
 };

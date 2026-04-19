@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import "./Skincare.css";
+import "../style/skincare.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import skincare from "./skincare.js";
 
 const Skincare = () => {
   const [skincare, setSkincare] = useState([]);

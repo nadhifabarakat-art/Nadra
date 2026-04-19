@@ -1,4 +1,4 @@
-import "./Home.css";
+import "../style/home.css";
 import { useEffect } from "react";
 import axios from "axios";
 

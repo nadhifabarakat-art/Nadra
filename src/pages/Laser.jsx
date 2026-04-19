@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import "./laser.css";
+import "../style/laser.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import laser from "./laser.js";
 
 const Laser = () => {
   const [laser, setLaser] = useState([]);

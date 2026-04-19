@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./Offers.css";
+import "../style/offers.css";
 
 function Offers() {
   const [offers, setOffers] = useState([]);

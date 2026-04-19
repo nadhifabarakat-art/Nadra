@@ -4,6 +4,8 @@
   min-height: 100vh;
   background: transparent;
 }
+
+
 .contact-container {
   display: flex;
   justify-content: space-between;
@@ -12,6 +14,8 @@
   margin: auto;
   flex-wrap: wrap;
 }
+
+
 .contact-left {
   flex: 1;
   background: linear-gradient(to bottom, #eed8d8, #ffffff, #f1d5b1);
@@ -34,6 +38,7 @@
 p {
   text-align: center;
 }
+
 .contact-form input,
 .contact-form textarea {
   width: 100%;

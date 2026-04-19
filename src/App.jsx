@@ -1,29 +1,41 @@
-import Home from "./Home";
-import About from "./About";
-import Contact from "./contact.jsx";
-import Laser from "./Laser";
-import Offers from "./Offers";
 import { Route, Routes } from "react-router-dom";
-import Layout from "./Layout";
-import "./App.css";
-import Beauty from "./Beauty.jsx";
-import Skincare from "./Skincare.jsx";
+import MainLayout from "./layout/MainLayout.jsx";
+import AdminLayout from "./admin/AdminLayout.jsx";
+import Home from "./pages/Home.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
+import Laser from "./pages/Laser.jsx";
+import Offers from "./pages/offers.jsx";
+import Skincare from "./pages/Skincare.jsx";
+import Beauty from "./pages/Beauty.jsx";
+import Dashboard from "./admin/Dashboard";
+import LaserPost from "./admin/LaserPost.jsx";
+import SkincarePost from "./admin/SkincarePost.jsx";
+import "./style/app.css";
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/beauty" element={<Beauty />} />
-          <Route path="/laser" element={<Laser />} />
-          <Route path="/skincare" element={<Skincare />} />
-          <Route path="/offers" element={<Offers />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="laser" element={<Laser />} />
+        <Route path="skincare" element={<Skincare />} />
+
+        <Route path="beauty">
+          <Route index element={<Beauty />} />
+          <Route path="laser" element={<Laser />} />
+          <Route path="skincare" element={<Skincare />} />
         </Route>
-      </Routes>
-    </>
+      </Route>
+
+      <Route path="admin" element={<AdminLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="laser" element={<LaserPost />} />
+        <Route path="skincare" element={<SkincarePost />} />
+      </Route>
+    </Routes>
   );
 }
 
