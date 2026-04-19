@@ -5,7 +5,7 @@ import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Laser from "./pages/Laser.jsx";
-import Offers from "./pages/offers.jsx";
+import Offers from "./pages/Offers.jsx";
 import Skincare from "./pages/Skincare.jsx";
 import Beauty from "./pages/Beauty.jsx";
 import Dashboard from "./admin/Dashboard";
@@ -22,11 +22,13 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="laser" element={<Laser />} />
         <Route path="skincare" element={<Skincare />} />
+        <Route path="offers" element={<Offers />} />
 
         <Route path="beauty">
           <Route index element={<Beauty />} />
           <Route path="laser" element={<Laser />} />
           <Route path="skincare" element={<Skincare />} />
+          <Route path="offers" element={<Offers />} />
         </Route>
       </Route>
 
