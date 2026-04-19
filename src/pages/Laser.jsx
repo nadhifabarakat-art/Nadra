@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import "./laser.css";
-import laser from "./laser.json";
+import laser from "./laser.js";
+
+
 
 const Laser = () => {
     return (

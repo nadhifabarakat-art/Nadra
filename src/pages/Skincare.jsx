@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import "./skincare.css";
-import skincare from "./skincare.json";
-
+import skincare from "./skincare.js";
 const Skincare = () => {
+
+
     return (
         <section className="skincare-container">
 

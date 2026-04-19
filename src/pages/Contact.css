@@ -5,7 +5,6 @@
     font-family: "Arial", sans-serif;
 }
 
-/* الكونتينر العام */
 .contact-container {
     display: flex;
     justify-content: space-between;
@@ -15,7 +14,6 @@
     flex-wrap: wrap;
 }
 
-/* القسم اليسار */
 .contact-left {
     flex: 1;
     background: white;
@@ -34,7 +32,6 @@
     color: #666;
 }
 
-/* الفورم */
 .contact-form input,
 .contact-form textarea {
     width: 100%;

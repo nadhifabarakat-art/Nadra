@@ -30,7 +30,7 @@ const Contact = () => {
                             <input type="email" placeholder="E-Mail" required />
 
                             <textarea placeholder="Nachricht..." rows="5" required></textarea>
-                            <dev className="suche">
+                            <div className="suche">
                                 <input type="checkbox" placeholder="Laser" />
                                 <label htmlFor="Laser">Laser</label>
                                 <br />
@@ -38,7 +38,7 @@ const Contact = () => {
                                 <label htmlFor="Skincare">Skincare</label>
 
 
-                            </dev>
+                            </div>
 
                             <button type="submit">إرسال الرسالة</button>
 
