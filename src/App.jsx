@@ -11,9 +11,10 @@ import Beauty from "./pages/Beauty.jsx";
 import Dashboard from "./admin/Dashboard";
 import LaserPost from "./admin/LaserPost.jsx";
 import SkincarePost from "./admin/SkincarePost.jsx";
+import Booking from "./admin/Booking.jsx";
 import "./style/app.css";
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route element={<MainLayout />}>
@@ -36,9 +37,10 @@ function App() {
         <Route index element={<Dashboard />} />
         <Route path="laser" element={<LaserPost />} />
         <Route path="skincare" element={<SkincarePost />} />
+        <Route path="booking" element={<Booking />} />
       </Route>
     </Routes>
   );
-}
+};
 
 export default App;

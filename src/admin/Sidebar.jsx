@@ -9,6 +9,7 @@ const Sidebar = () => {
         <NavLink to="/admin">Dashboard</NavLink>
         <NavLink to="/admin/laser">Laser Posts</NavLink>
         <NavLink to="/admin/skincare">Skincare Posts</NavLink>
+        <NavLink to="/admin/booking">Bookings</NavLink>
       </nav>
     </aside>
   );

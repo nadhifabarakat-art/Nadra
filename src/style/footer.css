@@ -38,7 +38,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
   display: flex;
-  flex-direction: column; /* 👈 هذا المهم */
+  flex-direction: column;
   gap: 8px;
 }
 
@@ -51,9 +51,26 @@
   opacity: 0.7;
   mix-blend-mode: multiply;
   object-fit: contain;
+  margin: 0px;
 }
 .copyright {
   text-align: center;
   margin-top: 100px;
   color: #888;
+}
+.footer-contact-link {
+  display: block;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 8px;
+  color: #c9a66b;
+  text-decoration: none;
+  transition: 0.3s;
+  font-family:
+    Noto Sans Arabic,
+    sans-serif;
+}
+
+.footer-contact-link:hover {
+  color: #d4a5a5;
 }
