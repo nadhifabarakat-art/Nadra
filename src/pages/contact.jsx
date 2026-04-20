@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "./Contact.css";
-
+import "../style/contact.css";
 const Contact = () => {
   const [messageSent, setMessageSent] = useState(false);
   const [form, setForm] = useState({
