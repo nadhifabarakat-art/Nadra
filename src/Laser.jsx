@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import "./laser.css";
+import "./styles/laser.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import Api from "./Api.jsx";
 const Laser = () => {
   const [laser, setLaser] = useState([]);
 
   const getLaser = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/laser");
+      const res = await Api.get("/laser");
       setLaser(res.data);
     } catch (err) {
       console.log(err);

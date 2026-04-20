@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
-import "./Skincare.css";
+import "./styles/Skincare.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Api from "./Api.jsx";
 
 const Skincare = () => {
   const [skincare, setSkincare] = useState([]);
 
   const getSkincare = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/skincare");
+      const res = await Api.get("/skincare");
       setSkincare(res.data);
     } catch (err) {
       console.log(err);

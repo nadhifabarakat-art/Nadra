@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Contact.css";
+import "./styles/Contact.css";
 
 const Contact = () => {
   const [messageSent, setMessageSent] = useState(false);
@@ -26,11 +26,15 @@ const Contact = () => {
               <input type="email" placeholder="E-Mail" required />
               <textarea placeholder="Nachricht..." rows="5" required></textarea>
               <dev className="suche">
-                <input type="checkbox" placeholder="Laser" />
-                <label htmlFor="Laser">Laser</label>
-                <br />
-                <input type="checkbox" placeholder=" Skincare" />
-                <label htmlFor="Skincare">Skincare</label>
+                <label className="check-item">
+                  <input type="checkbox" />
+                  Laser
+                </label>
+
+                <label className="check-item">
+                  <input type="checkbox" />
+                  Skincare
+                </label>
               </dev>
               <button type="submit">إرسال الرسالة</button>
             </form>

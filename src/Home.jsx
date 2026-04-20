@@ -1,21 +1,5 @@
-import "./Home.css";
-import { useEffect } from "react";
-import axios from "axios";
-
+import "./styles/Home.css";
 const Home = () => {
-  const getSkincare = async () => {
-    try {
-      const res = await axios.get("http://localhost:3000/skincare");
-      console.log(res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getSkincare();
-  }, []);
-
   return (
     <>
       <section className="home">

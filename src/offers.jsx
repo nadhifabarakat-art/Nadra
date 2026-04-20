@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./Offers.css";
-
+import "./styles/Offers.css";
+import Api from "./Api.jsx";
 function Offers() {
   const [offers, setOffers] = useState([]);
 
   const getOffers = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/offers");
+      const res = await Api.get("/offers");
       setOffers(res.data);
     } catch (err) {
       console.log(err);
