@@ -18,13 +18,9 @@
 }
 .nav-links {
   display: flex;
-<<<<<<< HEAD
-  gap: 20px;
-=======
   gap: 30px;
   flex-wrap: wrap;
   justify-content: center;
->>>>>>> b64e4b1cc34b817b2fea1ee9718200c80e5b04cb
   list-style: none;
 }
 .nav-links a {

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "../style/offers.css";
 import Api from "../Api.jsx";
+import { Link } from "react-router-dom";
 
 function Offers() {
   const [offers, setOffers] = useState([]);
@@ -41,8 +42,9 @@ function Offers() {
               <p>السعر القديم: {offer.oldPrice}€</p>
               <p>السعر الجديد: {offer.newPrice}€</p>
             </div>
-
-            <button className="termine-button">احجز الآن</button>
+            <Link to="/contact">
+              <button className="termine-button">احجز الآن</button>
+            </Link>
           </div>
         ))}
       </div>

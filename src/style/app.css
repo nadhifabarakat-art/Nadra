@@ -10,4 +10,7 @@
 }
 body {
   background: linear-gradient(to bottom, #eed8d8, #ffffff, #f1d5b1);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }

@@ -67,7 +67,7 @@ const Contact = () => {
               <input
                 type="text"
                 name="service"
-                placeholder="الخدمة المطلوبة"
+                placeholder="Service (optional)"
                 required
                 onChange={handleChange}
               />

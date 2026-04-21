@@ -11,13 +11,13 @@ import Beauty from "./pages/Beauty.jsx";
 import Dashboard from "./admin/Dashboard";
 import LaserPost from "./admin/LaserPost.jsx";
 import SkincarePost from "./admin/SkincarePost.jsx";
-<<<<<<< HEAD
+
 import OfferPost from "./admin/OfferPost.jsx";
-=======
+
 import Booking from "./admin/Booking.jsx";
->>>>>>> b64e4b1cc34b817b2fea1ee9718200c80e5b04cb
+
 import "./style/app.css";
-import Booking from "./admin/Booking.jsx";
+
 
 const App = () => {
   return (
@@ -42,10 +42,10 @@ const App = () => {
         <Route index element={<Dashboard />} />
         <Route path="laser" element={<LaserPost />} />
         <Route path="skincare" element={<SkincarePost />} />
-<<<<<<< HEAD
+
         <Route path="Offer" element={<OfferPost />} />
-=======
->>>>>>> b64e4b1cc34b817b2fea1ee9718200c80e5b04cb
+
+
         <Route path="booking" element={<Booking />} />
       </Route>
     </Routes>
