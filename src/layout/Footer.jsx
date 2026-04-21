@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-section">
-          <p> البشرة الجميلة تبدأ من هنا </p>
+          <p>البشرة الجميلة تبدأ من هنا</p>
         </div>
 
         <div className="footer-section links">
@@ -28,12 +28,12 @@ const Footer = () => {
           <a href="mailto:info@nadhifa.de">✉️ info@nadhifa.de</a>
           <a href="mailto:info@sidra.de">✉️ info@sidra.de</a>
         </div>
+
         <img src="/nadra1.png" className="footer-logo" />
       </div>
+      <br />
 
-      <p className="copyright">
-        © 2026 Nadra Beauty. Alle Rechte vorbehalten.{" "}
-      </p>
+      <p className="copyright">© 2026 Nadra Beauty. Alle Rechte vorbehalten.</p>
     </footer>
   );
 };

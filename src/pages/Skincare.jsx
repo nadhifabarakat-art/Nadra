@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import "../style/skincare.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+<<<<<<< HEAD
 import Api from "../Api.jsx";
+=======
+>>>>>>> b64e4b1cc34b817b2fea1ee9718200c80e5b04cb
 
 const Skincare = () => {
   const [skincare, setSkincare] = useState([]);

@@ -16,7 +16,7 @@ const Beauty = () => {
             <p>إزالة الشعر بتقنية حديثة وآمنة</p>
           </div>
 
-          <div className="card" onClick={() => navigate("/skincare")}>
+          <div className="card" onClick={() => navigate("../Skincare")}>
             <h2>Skincare</h2>
             <p>عناية متكاملة لبشرة صحية ونضرة</p>
           </div>
