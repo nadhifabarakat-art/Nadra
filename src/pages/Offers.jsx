@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./styles/Offers.css";
-import Api from "./Api.jsx";
+import "../style/offers.css";
+import Api from "../Api.jsx";
+
 function Offers() {
   const [offers, setOffers] = useState([]);
 

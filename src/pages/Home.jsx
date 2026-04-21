@@ -1,4 +1,7 @@
-import "./styles/Home.css";
+import "../style/home.css";
+
+import axios from "axios";
+
 const Home = () => {
   return (
     <>

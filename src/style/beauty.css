@@ -1,4 +1,4 @@
-.beauty {
+z.beauty {
   padding: 60px 20px;
   text-align: center;
 }
@@ -12,6 +12,7 @@
 }
 h1 {
   color: #c9a66b;
+  text-align: center;
 }
 .card {
   width: 260px;
