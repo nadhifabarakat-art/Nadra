@@ -38,36 +38,36 @@ const SkincarePost = () => {
   };
 
   return (
-    <div className="skincare-admin-container">
+    <div className="beauty-container">
       <h2>Skincare Posts</h2>
 
       {showForm && (
-        <div className="skincare-admin-form">
+        <div className="beauty-form">
           <input
-            className="skincare-admin-input"
+            className="beauty-input"
             placeholder="الاسم"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
           <textarea
-            className="skincare-admin-input"
+            className="beauty-input"
             placeholder="المحتوى"
             value={form.content}
             onChange={(e) => setForm({ ...form, content: e.target.value })}
           />
           <input
-            className="skincare-admin-input"
+            className="beauty-input"
             placeholder="المدة"
             value={form.duration}
             onChange={(e) => setForm({ ...form, duration: e.target.value })}
           />
           <input
-            className="skincare-admin-input"
+            className="beauty-input"
             placeholder="السعر"
             value={form.price}
             onChange={(e) => setForm({ ...form, price: e.target.value })}
           />
-          <div className="skincare-admin-buttons">
+          <div className="beauty-form-buttons">
             <button className="btn-save" onClick={savePost}>
               حفظ
             </button>
@@ -79,12 +79,12 @@ const SkincarePost = () => {
       )}
 
       {posts.map((post) => (
-        <div key={post.id} className="skincare-admin-card">
+        <div key={post.id} className="beauty-card">
           <h3>{post.name}</h3>
           <p>{post.content}</p>
           <p className="duration">⏱️ {post.duration}</p>
           <p className="price">💰 {post.price} €</p>
-          <div className="skincare-admin-card-buttons">
+          <div className="beauty-card-buttons">
             <button className="btn-edit" onClick={() => startEdit(post)}>
               {" "}
               تعديل

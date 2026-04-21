@@ -1,15 +1,16 @@
 import { useState } from "react";
-import laser from "../pages/laser.js";
+import offer from "../pages/offer.js";
 import "./style/sidebar.css";
 
-const LaserPost = () => {
-  const [posts, setPosts] = useState(laser);
+const OfferPost = () => {
+  const [posts, setPosts] = useState(offer);
   const [editingPost, setEditingPost] = useState(null);
   const [form, setForm] = useState({
-    title: "",
-    shortContent: "",
-    content: "",
-    price: "",
+    name: "",
+    sessions: "",
+    oldPrice: "",
+    newPrice: "",
+    type: "",
   });
   const [showForm, setShowForm] = useState(false);
 
@@ -22,10 +23,11 @@ const LaserPost = () => {
   const startEdit = (post) => {
     setEditingPost(post.id);
     setForm({
-      title: post.title,
-      shortContent: post.shortContent,
-      content: post.content,
-      price: post.price,
+      name: post.name,
+      sessions: post.sessions,
+      oldPrice: post.oldPrice,
+      newPrice: post.newPrice,
+      type: post.type,
     });
     setShowForm(true);
   };
@@ -34,38 +36,38 @@ const LaserPost = () => {
     setPosts(posts.map((p) => (p.id === editingPost ? { ...p, ...form } : p)));
     setShowForm(false);
     setEditingPost(null);
-    setForm({ title: "", shortContent: "", content: "", price: "" });
+    setForm({ name: "", sessions: "", oldPrice: "", newPrice: "", type: "" });
   };
 
   return (
     <div className="beauty-container">
-      <h2>Laser Posts</h2>
+      <h2>Offer Posts</h2>
 
       {showForm && (
         <div className="beauty-form">
           <input
             className="beauty-input"
             placeholder="العنوان"
-            value={form.title}
-            onChange={(e) => setForm({ ...form, title: e.target.value })}
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
           <input
             className="beauty-input"
             placeholder="المحتوى المختصر"
-            value={form.shortContent}
-            onChange={(e) => setForm({ ...form, shortContent: e.target.value })}
+            value={form.sessions}
+            onChange={(e) => setForm({ ...form, sessions: e.target.value })}
           />
           <textarea
             className="beauty-input"
             placeholder="المحتوى الكامل"
-            value={form.content}
-            onChange={(e) => setForm({ ...form, content: e.target.value })}
+            value={form.oldPrice}
+            onChange={(e) => setForm({ ...form, oldPrice: e.target.value })}
           />
           <input
             className="beauty-input"
             placeholder="السعر"
-            value={form.price}
-            onChange={(e) => setForm({ ...form, price: e.target.value })}
+            value={form.newPrice}
+            onChange={(e) => setForm({ ...form, newPrice: e.target.value })}
           />
           <div className="beauty-form-buttons">
             <button className="btn-save" onClick={savePost}>
@@ -80,10 +82,10 @@ const LaserPost = () => {
 
       {posts.map((post) => (
         <div key={post.id} className="beauty-card">
-          <h3>{post.title}</h3>
-          <p className="short-content">{post.shortContent}</p>
-          <p>{post.content}</p>
-          <p className="price">💰 {post.price} €</p>
+          <h3>{post.name}</h3>
+          <p className="short-content">{post.sessions}</p>
+          <p>{post.oldPrice}</p>
+          <p className="price">💰 {post.newPrice} €</p>
           <div className="beauty-card-buttons">
             <button className="btn-edit" onClick={() => startEdit(post)}>
               {" "}
@@ -100,4 +102,4 @@ const LaserPost = () => {
   );
 };
 
-export default LaserPost;
+export default OfferPost;
