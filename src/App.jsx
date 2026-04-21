@@ -13,6 +13,7 @@ import LaserPost from "./admin/LaserPost.jsx";
 import SkincarePost from "./admin/SkincarePost.jsx";
 import OfferPost from "./admin/OfferPost.jsx";
 import "./style/app.css";
+import Booking from "./admin/Booking.jsx";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="laser" element={<Laser />} />
         <Route path="skincare" element={<Skincare />} />
-        <Route path=" offers" element={<Offers />} />
+        <Route path="offers" element={<Offers />} />
 
         <Route path="beauty">
           <Route index element={<Beauty />} />
@@ -38,6 +39,7 @@ function App() {
         <Route path="laser" element={<LaserPost />} />
         <Route path="skincare" element={<SkincarePost />} />
         <Route path="Offer" element={<OfferPost />} />
+        <Route path="booking" element={<Booking />} />
       </Route>
     </Routes>
   );

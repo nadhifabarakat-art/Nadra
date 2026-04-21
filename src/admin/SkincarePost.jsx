@@ -1,45 +1,106 @@
-import { useState } from "react";
-import skincare from "../pages/skincare.js";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./style/sidebar.css";
 
 const SkincarePost = () => {
-  const [posts, setPosts] = useState(skincare);
+  const [posts, setPosts] = useState([]);
   const [editingPost, setEditingPost] = useState(null);
   const [form, setForm] = useState({
     name: "",
-    content: "",
     duration: "",
     price: "",
+    section: "",
+    category: "skincare",
   });
   const [showForm, setShowForm] = useState(false);
 
-  const deletePost = (id) => {
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/skincare/");
+        setPosts(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getPosts();
+  }, []);
+
+  const deletePost = async (id) => {
     if (window.confirm("متأكدة تحذفي؟")) {
-      setPosts(posts.filter((p) => p.id !== id));
+      try {
+        await axios.delete(`http://localhost:3000/skincare/${id}`);
+        setPosts(posts.filter((p) => p._id !== id));
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
   const startEdit = (post) => {
-    setEditingPost(post.id);
+    setEditingPost(post._id);
     setForm({
       name: post.name,
-      content: post.content,
       duration: post.duration,
       price: post.price,
+      section: post.section,
+      category: post.category,
     });
     setShowForm(true);
   };
 
-  const savePost = () => {
-    setPosts(posts.map((p) => (p.id === editingPost ? { ...p, ...form } : p)));
-    setShowForm(false);
-    setEditingPost(null);
-    setForm({ name: "", content: "", duration: "", price: "" });
+  const savePost = async () => {
+    try {
+      await axios.put(`http://localhost:3000/skincare/${editingPost}`, {
+        ...form,
+        price: Number(form.price),
+      });
+      setPosts(
+        posts.map((p) => (p._id === editingPost ? { ...p, ...form } : p)),
+      );
+      setShowForm(false);
+      setEditingPost(null);
+      setForm({
+        name: "",
+        duration: "",
+        price: "",
+        section: "",
+        category: "skincare",
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addPost = async () => {
+    try {
+      const res = await axios.post("http://localhost:3000/skincare/", form);
+      setPosts([...posts, res.data.skincare]);
+      setShowForm(false);
+      setForm({
+        name: "",
+        duration: "",
+        price: "",
+        section: "",
+        category: "skincare",
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <div className="beauty-container">
       <h2>Skincare Posts</h2>
+      <button
+        className="btn-save"
+        onClick={() => {
+          setEditingPost(null);
+          setShowForm(true);
+        }}
+      >
+        + إضافة جديد
+      </button>
 
       {showForm && (
         <div className="beauty-form">
@@ -48,12 +109,6 @@ const SkincarePost = () => {
             placeholder="الاسم"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-          />
-          <textarea
-            className="beauty-input"
-            placeholder="المحتوى"
-            value={form.content}
-            onChange={(e) => setForm({ ...form, content: e.target.value })}
           />
           <input
             className="beauty-input"
@@ -67,8 +122,17 @@ const SkincarePost = () => {
             value={form.price}
             onChange={(e) => setForm({ ...form, price: e.target.value })}
           />
+          <input
+            className="beauty-input"
+            placeholder="القسم (basic/peeling...)"
+            value={form.section}
+            onChange={(e) => setForm({ ...form, section: e.target.value })}
+          />
           <div className="beauty-form-buttons">
-            <button className="btn-save" onClick={savePost}>
+            <button
+              className="btn-save"
+              onClick={editingPost ? savePost : addPost}
+            >
               حفظ
             </button>
             <button className="btn-cancel" onClick={() => setShowForm(false)}>
@@ -79,18 +143,16 @@ const SkincarePost = () => {
       )}
 
       {posts.map((post) => (
-        <div key={post.id} className="beauty-card">
+        <div key={post._id} className="beauty-card">
           <h3>{post.name}</h3>
-          <p>{post.content}</p>
           <p className="duration">⏱️ {post.duration}</p>
           <p className="price">💰 {post.price} €</p>
+          <p>{post.section}</p>
           <div className="beauty-card-buttons">
             <button className="btn-edit" onClick={() => startEdit(post)}>
-              {" "}
               تعديل
             </button>
-            <button className="btn-delete" onClick={() => deletePost(post.id)}>
-              {" "}
+            <button className="btn-delete" onClick={() => deletePost(post._id)}>
               حذف
             </button>
           </div>

@@ -1,13 +1,28 @@
 import { useState } from "react";
-
+import axios from "axios";
 import "../style/contact.css";
 
 const Contact = () => {
   const [messageSent, setMessageSent] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+    service: "",
+  });
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessageSent(true);
+    try {
+      await axios.post("http://localhost:3000/contact/", form);
+      setMessageSent(true);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -22,21 +37,40 @@ const Contact = () => {
             <h1>تواصل معنا</h1>
             <p>هل لديك سؤال أو ترغب بالتواصل معنا؟ لا تتردد في مراسلتنا 💬</p>
             <form className="contact-form" onSubmit={handleSubmit}>
-              <input type="text" placeholder="Name" required />
-              <input type="text" placeholder="Nummer" required />
-              <input type="email" placeholder="E-Mail" required />
-              <textarea placeholder="Nachricht..." rows="5" required></textarea>
-              <dev className="suche">
-                <label className="check-item">
-                  <input type="checkbox" />
-                  Laser
-                </label>
-
-                <label className="check-item">
-                  <input type="checkbox" />
-                  Skincare
-                </label>
-              </dev>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Nummer"
+                onChange={handleChange}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="E-Mail"
+                required
+                onChange={handleChange}
+              />
+              <textarea
+                name="message"
+                placeholder="Nachricht..."
+                rows="5"
+                required
+                onChange={handleChange}
+              ></textarea>
+              <input
+                type="text"
+                name="service"
+                placeholder="الخدمة المطلوبة"
+                required
+                onChange={handleChange}
+              />
               <button type="submit">إرسال الرسالة</button>
             </form>
           </div>
@@ -51,7 +85,7 @@ const Contact = () => {
               <h4>Folge uns</h4>
               <div className="icons">
                 <a
-                  href="https://www.instagram.com/<Nadhifa.-.b"
+                  href="https://www.instagram.com/Nadhifa.-.b"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="instagram"
@@ -60,7 +94,7 @@ const Contact = () => {
                 </a>
                 <br />
                 <a
-                  href="https://www.instagram.com/<sidra-alsabasabi"
+                  href="https://www.instagram.com/sidra-alsabasabi"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="instagram"
