@@ -17,7 +17,7 @@ const OfferPost = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/offers/");
+        const res = await axios.get("http://localhost:3000/booking/");
         setPosts(res.data);
       } catch (err) {
         console.log(err);

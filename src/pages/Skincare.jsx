@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-
 import "../style/skincare.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 import Api from "../Api.jsx";
 
 const Skincare = () => {
