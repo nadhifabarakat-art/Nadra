@@ -25,9 +25,9 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className="Host">
+      {/* <div className="Host">
         <NavLink to="/Admin">Admin</NavLink>
-      </div>
+      </div> */}
     </header>
   );
 };
