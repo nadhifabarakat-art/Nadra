@@ -6,11 +6,10 @@ const LaserPost = () => {
   const [posts, setPosts] = useState([]);
   const [editingPost, setEditingPost] = useState(null);
   const [form, setForm] = useState({
-    name: "",
-    duration: "",
+    title: "",
+    shortContent: "",
+    content: "",
     price: "",
-    section: "",
-    category: "laser",
   });
   const [showForm, setShowForm] = useState(false);
 
@@ -40,11 +39,10 @@ const LaserPost = () => {
   const startEdit = (post) => {
     setEditingPost(post._id);
     setForm({
-      name: post.name,
-      duration: post.duration,
-      price: post.price,
-      section: post.section,
-      category: post.category,
+      title: post.title || "",
+      shortContent: post.shortContent || "",
+      content: post.content || "",
+      price: post.price || "",
     });
     setShowForm(true);
   };
@@ -61,11 +59,10 @@ const LaserPost = () => {
       setShowForm(false);
       setEditingPost(null);
       setForm({
-        name: "",
-        duration: "",
+        title: "",
+        shortContent: "",
+        content: "",
         price: "",
-        section: "",
-        category: "laser",
       });
     } catch (err) {
       console.log(err);
@@ -81,11 +78,10 @@ const LaserPost = () => {
       setPosts([...posts, res.data.laser]);
       setShowForm(false);
       setForm({
-        name: "",
-        duration: "",
+        title: "",
+        shortContent: "",
+        content: "",
         price: "",
-        section: "",
-        category: "laser",
       });
     } catch (err) {
       console.log(err);
@@ -95,42 +91,35 @@ const LaserPost = () => {
   return (
     <div className="beauty-container">
       <h2>Laser Posts</h2>
-      <button
-        className="btn-save"
-        onClick={() => {
-          setEditingPost(null);
-          setShowForm(true);
-        }}
-      >
-        + إضافة جديد
-      </button>
 
       {showForm && (
         <div className="beauty-form">
           <input
             className="beauty-input"
-            placeholder="الاسم"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            placeholder="العنوان"
+            value={form.title}
+            onChange={(e) => setForm({ ...form, title: e.target.value })}
           />
           <input
             className="beauty-input"
-            placeholder="المدة"
-            value={form.duration}
-            onChange={(e) => setForm({ ...form, duration: e.target.value })}
+            placeholder="وصف مختصر"
+            value={form.shortContent}
+            onChange={(e) => setForm({ ...form, shortContent: e.target.value })}
+          />
+          <textarea
+            className="beauty-input"
+            placeholder="المحتوى الكامل"
+            value={form.content}
+            onChange={(e) => setForm({ ...form, content: e.target.value })}
           />
           <input
             className="beauty-input"
-            placeholder="السعر"
+            placeholder=""
+            type="number"
             value={form.price}
             onChange={(e) => setForm({ ...form, price: e.target.value })}
           />
-          <input
-            className="beauty-input"
-            placeholder="القسم"
-            value={form.section}
-            onChange={(e) => setForm({ ...form, section: e.target.value })}
-          />
+
           <div className="beauty-form-buttons">
             <button
               className="btn-save"
@@ -145,22 +134,28 @@ const LaserPost = () => {
         </div>
       )}
 
-      {posts.map((post) => (
-        <div key={post._id} className="beauty-card">
-          <h3>{post.name}</h3>
-          <p className="duration">⏱️ {post.duration}</p>
-          <p className="price">💰 {post.price} €</p>
-          <p>{post.section}</p>
-          <div className="beauty-card-buttons">
-            <button className="btn-edit" onClick={() => startEdit(post)}>
-              تعديل
-            </button>
-            <button className="btn-delete" onClick={() => deletePost(post._id)}>
-              حذف
-            </button>
+      <div className="beauty-cards-list">
+        {posts.map((post) => (
+          <div key={post._id} className="beauty-card">
+            <h3>{post.title}</h3>
+
+            <p className="short-content">{post.shortContent}</p>
+            <p className="content">{post.content}</p>
+            <p className="price">{post.price} €</p>
+            <div className="beauty-card-buttons">
+              <button className="btn-edit" onClick={() => startEdit(post)}>
+                تعديل
+              </button>
+              <button
+                className="btn-delete"
+                onClick={() => deletePost(post._id)}
+              >
+                حذف
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

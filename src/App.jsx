@@ -18,7 +18,6 @@ import Booking from "./admin/Booking.jsx";
 
 import "./style/app.css";
 
-
 const App = () => {
   return (
     <Routes>
@@ -44,7 +43,6 @@ const App = () => {
         <Route path="skincare" element={<SkincarePost />} />
 
         <Route path="Offer" element={<OfferPost />} />
-
 
         <Route path="booking" element={<Booking />} />
       </Route>

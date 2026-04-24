@@ -7,7 +7,7 @@
 }
 
 .no-bookings {
-  color: #888;
+  color: #c9a66b;
   font-size: 16px;
 }
 
@@ -24,17 +24,13 @@
 }
 
 .btn-delete {
-  background: red;
-  color: white;
+  background: #ff7aa2;
+  color: #c9a66b;
   padding: 6px 12px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
-}
-
-.btn-delete:hover {
-  background: darkred;
 }
 
 .beauty-form {
@@ -77,14 +73,7 @@
   display: flex;
   justify-content: center;
 }
-.btn-save {
-  background: green;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+
 .btn-cancel {
   background: gray;
   color: white;
@@ -94,7 +83,7 @@
   cursor: pointer;
 }
 .btn-edit {
-  background: blue;
+  background: #c9a66b;
   color: white;
   padding: 6px 12px;
   border: none;
@@ -102,7 +91,7 @@
   cursor: pointer;
 }
 .btn-delete {
-  background: red;
+  background: #f1b9b9;
   color: white;
   padding: 6px 12px;
   border: none;
@@ -112,7 +101,7 @@
 .sidebar {
   width: 220px;
   min-height: 100vh;
-  background-color: #1a1a2e;
+  background-color: rgb(16, 15, 15);
   padding: 20px;
   position: fixed;
   top: 0;
@@ -134,12 +123,12 @@
   text-decoration: none;
   padding: 10px 16px;
   border-radius: 8px;
-  background-color: #2a2a4a;
+  background-color: rgb(16, 15, 15);
   transition: background 0.3s;
 }
 .sidebar nav a:hover {
-  background-color: #e91e8c;
+  background-color: #c9a66b;
 }
 .sidebar nav a.active {
-  background-color: #e91e8c;
+  background-color: #c9a66b;
 }
