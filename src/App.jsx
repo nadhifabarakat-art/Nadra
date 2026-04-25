@@ -36,7 +36,7 @@ const App = () => {
           <Route path="offers" element={<Offers />} />
         </Route>
       </Route>
-
+                
       <Route path="admin" element={<AdminLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="laser" element={<LaserPost />} />

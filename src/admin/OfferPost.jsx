@@ -78,7 +78,7 @@ const OfferPost = () => {
             </button>
           </div>
         </div>
-      )}
+      )}      
 
       {posts.map((post) => (
         <div key={post.id} className="beauty-card">
