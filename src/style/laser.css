@@ -53,11 +53,11 @@
   border-radius: 30px;
   text-decoration: none;
   color: #fff;
-  background-color: #6c63ff; /* elegante Akzentfarbe */
+  background: linear-gradient(45deg, #ff6f91, #ff9472);
   transition:
     background-color 0.3s,
     transform 0.3s;
-  border: none; /* wichtig für button */
+  border: none;
   cursor: pointer;
 }
 .termine-button:hover {

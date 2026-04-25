@@ -6,8 +6,8 @@
   padding: 50px 20px;
   background: transparent;
 }
-.offer-card {
-  background: linear-gradient(to bottom, #ece2e2, #ffffff, #efd9bd);
+.offers-card {
+  background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -18,44 +18,42 @@
     box-shadow 0.3s;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(to bottom, #f9dede, #ffffff, #f9eddd);
 }
 .offer-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 50px rgba(255, 182, 193, 0.35);
+  padding: 10px;
+  border: 1px solid black;
+  width: 250px;
+  box-sizing: border-box;
 }
-.offer-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
+
 .offers-content {
-  padding: 25px;
+  padding: 50px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
   text-align: center;
 }
 .offers-content h3 {
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #222222;
 }
 .offers-content p {
-  font-size: 1rem;
+  font-size: 10px;
   color: #555555;
-  line-height: 1.5;
+  line-height: 5;
 }
 .termine-button {
-  padding: 20px 40px;
+  margin-top: 5px;
+  padding: 5px 10px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border-radius: 70px;
+  color: #fff;
   background: linear-gradient(45deg, #ff6f91, #ff9472);
-  color: white;
-  border-radius: 60px;
-  text-decoration: none;
-  transition: 1.5s;
-  border: none; /* wichtig für button */
-  cursor: pointer;
-}
-.termine-button:hover {
-  background-color: #5848c2;
-  transform: scale(1.05);
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
 }
