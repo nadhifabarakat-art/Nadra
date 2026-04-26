@@ -1,0 +1,13 @@
+import { Navigate } from "react-router-dom";
+
+function ProtectedAdmin({ children }) {
+  const isAdmin = localStorage.getItem("isAdmin");
+
+  if (isAdmin !== "true") {
+    return <Navigate to="/admin-login" />;
+  }
+
+  return children;
+}
+
+export default ProtectedAdmin;

@@ -11,11 +11,10 @@ import Beauty from "./pages/Beauty.jsx";
 import Dashboard from "./admin/Dashboard";
 import LaserPost from "./admin/LaserPost.jsx";
 import SkincarePost from "./admin/SkincarePost.jsx";
-
 import OfferPost from "./admin/OfferPost.jsx";
-
 import Booking from "./admin/Booking.jsx";
-
+import AdminLogin from "./admin/AdminLogin.jsx";
+import ProtectedAdmin from "./admin/ProtectedAdmin.jsx";
 import "./style/app.css";
 
 const App = () => {
@@ -36,14 +35,21 @@ const App = () => {
           <Route path="offers" element={<Offers />} />
         </Route>
       </Route>
-                
-      <Route path="admin" element={<AdminLayout />}>
+
+      <Route path="/admin-login" element={<AdminLogin />} />
+
+      <Route
+        path="admin"
+        element={
+          <ProtectedAdmin>
+            <AdminLayout />
+          </ProtectedAdmin>
+        }
+      >
         <Route index element={<Dashboard />} />
         <Route path="laser" element={<LaserPost />} />
         <Route path="skincare" element={<SkincarePost />} />
-
-        <Route path="Offer" element={<OfferPost />} />
-
+        <Route path="offer" element={<OfferPost />} />
         <Route path="booking" element={<Booking />} />
       </Route>
     </Routes>

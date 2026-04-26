@@ -27,7 +27,7 @@ const Booking = () => {
 
   return (
     <div className="booking-container">
-      <h2>📋 الحجوزات</h2>
+      <h2>الحجوزات</h2>
 
       {bookings.length === 0 ? (
         <p className="no-bookings">لا يوجد حجوزات بعد</p>
@@ -35,7 +35,7 @@ const Booking = () => {
         bookings.map((b) => (
           <div key={b.id} className="booking-card">
             <p>
-              👤 <strong>{b.name}</strong>
+               <strong>{b.name}</strong>
             </p>
             <p> {b.phone}</p>
             <p> {b.email}</p>
