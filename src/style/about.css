@@ -21,6 +21,7 @@ h2 {
   width: 70%;
   direction: rtl;
   text-align: right;
+  margin-bottom: 20px;
   line-height: 1.8;
 }
 .about-img {
@@ -45,4 +46,41 @@ h2 {
 .about-img img:hover {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 12px 30px rgba(212, 175, 55, 0.9);
+}
+.team {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  gap: 60px; 
+  width: 100%;
+  margin-top: 40px;
+  padding-top: 20px;
+}
+.personal-img {
+  text-align: center;
+  width: 220px; /
+}
+.personal-img img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+.personal-img:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+}
+.personal-img h3 {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #c9a66b;
+}
+.personal-img p {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.4;
+  direction: rtl; 
 }

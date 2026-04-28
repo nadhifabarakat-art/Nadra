@@ -21,7 +21,7 @@ const About = () => {
           </p>
         </div>
         <div className="about-img">
-          <img src="/abou20.webp" alt="about" />
+          <img src="/images/abou20.webp" alt="about" />
         </div>
       </div>
       <div className="about-row reverse">
@@ -36,7 +36,31 @@ const About = () => {
           </p>
         </div>
         <div className="about-img">
-          <img src="/beauty.jpg" alt="beauty" />
+          <img src="/images/beauty.jpg" alt="beauty" />
+        </div>
+      </div>
+      <div className="team">
+        <div className="personal-img">
+          <img src="/images/sidra.jpg" alt="sidra" />
+          <h3>Sidra</h3>
+          <p>
+            خبيرة عناية بالبشرة والتجميل أمتلك خبرة تمتد لأكثر من 7 سنوات في
+            مجال العناية بالبشرة وتقديم استشارات تجميلية مخصصة لكل نوع بشرة.
+            حاصلة على شهادة معتمدة في العناية بالبشرة (Skin Care Specialist)
+            وشهادة في تقنيات العناية الحديثة، وأسعى دائماً لتقديم أفضل النتائج
+            بأحدث الأساليب
+          </p>
+        </div>
+        <div className="personal-img">
+          <img src="/images/nadhfa.jpg" alt="nadhfa" />
+          <h3>Nadhfa</h3>
+          <p>
+            أخصائية تجميل وعناية بالبشرة بخبرة عملية لأكثر من 4 سنوات في مجال
+            التجميل والعناية بالبشرة، أقدم حلول فعالة ومخصصة لتحسين صحة وجمال
+            البشرة. حاصلة على شهادات معتمدة في العناية بالبشرة والتقنيات
+            العلاجية الحديثة، مع اهتمام بأدق التفاصيل للحصول على نتائج طبيعية
+            وآمنة
+          </p>
         </div>
       </div>
     </section>

@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import "./style/sidebar.css";
 import axios from "axios";
-
 const Booking = () => {
   const [bookings, setBookings] = useState([]);
-
   useEffect(() => {
     const getBookings = async () => {
       try {
@@ -16,7 +14,6 @@ const Booking = () => {
     };
     getBookings();
   }, []);
-
   const deleteBooking = (id) => {
     if (window.confirm("متأكدة تحذفي؟")) {
       const updated = bookings.filter((b) => b.id !== id);
@@ -24,18 +21,16 @@ const Booking = () => {
       localStorage.setItem("bookings", JSON.stringify(updated));
     }
   };
-
   return (
     <div className="booking-container">
       <h2>الحجوزات</h2>
-
       {bookings.length === 0 ? (
         <p className="no-bookings">لا يوجد حجوزات بعد</p>
       ) : (
         bookings.map((b) => (
           <div key={b.id} className="booking-card">
             <p>
-               <strong>{b.name}</strong>
+              <strong>{b.name}</strong>
             </p>
             <p> {b.phone}</p>
             <p> {b.email}</p>
@@ -50,5 +45,4 @@ const Booking = () => {
     </div>
   );
 };
-
 export default Booking;

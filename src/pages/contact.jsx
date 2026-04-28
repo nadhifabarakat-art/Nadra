@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import "../style/contact.css";
-
 const Contact = () => {
   const [messageSent, setMessageSent] = useState(false);
   const [form, setForm] = useState({
@@ -10,11 +9,9 @@ const Contact = () => {
     message: "",
     service: "",
   });
-
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -24,7 +21,6 @@ const Contact = () => {
       console.log(err);
     }
   };
-
   return (
     <div className="contact">
       {messageSent ? (
@@ -109,5 +105,4 @@ const Contact = () => {
     </div>
   );
 };
-
 export default Contact;

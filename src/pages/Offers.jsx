@@ -3,10 +3,8 @@ import axios from "axios";
 import "../style/offers.css";
 import Api from "../Api.jsx";
 import { Link } from "react-router-dom";
-
 function Offers() {
   const [offers, setOffers] = useState([]);
-
   const getOffers = async () => {
     try {
       const res = await Api.get("/offers");
@@ -15,20 +13,16 @@ function Offers() {
       console.log(err);
     }
   };
-
   useEffect(() => {
     getOffers();
   }, []);
-
   return (
     <div className="offers-page">
       <h1 className="offers-title">عروض رمضان 🌙</h1>
-
       <div className="offers-container">
         {offers.map((offer) => (
           <div key={offer._id || offer.id} className="offer-card">
             <h3>{offer.name}</h3>
-
             <div className="offer-content">
               <p>الجلسات:</p>
               <ul>
@@ -37,7 +31,6 @@ function Offers() {
                 ))}
               </ul>
             </div>
-
             <div className="offer-bottom">
               <p>السعر القديم: {offer.oldPrice}€</p>
               <p>السعر الجديد: {offer.newPrice}€</p>
@@ -51,5 +44,4 @@ function Offers() {
     </div>
   );
 }
-
 export default Offers;

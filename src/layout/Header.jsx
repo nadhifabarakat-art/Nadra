@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom";
 import "../style/header.css";
-
 const Header = () => {
   return (
     <header className="navbar">
-      <img src="/nadra1.png" className="nav-logo" />
+      <img src="/images/nadra1.png" className="nav-logo" />
       <nav>
         <ul className="nav-links">
           <li>
@@ -19,17 +18,12 @@ const Header = () => {
           <li>
             <NavLink to="/about">About</NavLink>
           </li>
-
           <li>
             <NavLink to="/contact">Contact</NavLink>
           </li>
         </ul>
       </nav>
-      {/* <div className="Host">
-        <NavLink to="/Admin">Admin</NavLink>
-      </div> */}
     </header>
   );
 };
-
 export default Header;

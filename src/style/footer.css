@@ -2,7 +2,6 @@
   padding: 60px 40px;
   position: relative;
 }
-
 .footer-container {
   display: flex;
   justify-content: space-between;
@@ -33,27 +32,20 @@
   bottom: 50px;
   padding: 15px;
   border-radius: 12px;
-
-  background-color: #fff; /* عشان يوضح */
+  background-color: #fff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-
   display: flex;
   flex-direction: column;
-  gap: 10px; /* مسافة بين العناصر */
+  gap: 10px;
 }
-
-/* الروابط داخل الكارد */
 .footer-contact a {
-  text-decoration: none; /* يشيل الخط */
+  text-decoration: none;
   color: #c9a66b;
   font-size: 14px;
 }
-
-/* hover خفيف */
 .footer-contact a:hover {
   opacity: 0.7;
 }
-
 .footer-logo {
   position: absolute;
   left: 70px;
@@ -81,7 +73,6 @@
     Noto Sans Arabic,
     sans-serif;
 }
-
 .footer-contact-link:hover {
   color: #c9a66b;
 }
