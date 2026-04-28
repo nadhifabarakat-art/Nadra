@@ -4,10 +4,13 @@ import "./style/sidebar.css";
 
 const SkincarePost = () => {
   const [posts, setPosts] = useState([]);
+  const [deletedPosts, setDeletedPosts] = useState([]);
+  const [showDeleted, setShowDeleted] = useState(false);
   const [editingPost, setEditingPost] = useState(null);
   const [form, setForm] = useState({
     name: "",
     duration: "",
+    content: "",
     price: "",
     section: "",
     category: "",
@@ -15,25 +18,47 @@ const SkincarePost = () => {
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    const getPosts = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/skincare/");
-        setPosts(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     getPosts();
+    getDeletedPosts();
   }, []);
+
+  const getPosts = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/skincare/");
+      setPosts(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getDeletedPosts = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/skincare/deleted");
+      setDeletedPosts(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const deletePost = async (id) => {
     if (window.confirm("متأكدة تحذفي؟")) {
       try {
         await axios.delete(`http://localhost:3000/skincare/${id}`);
         setPosts(posts.filter((p) => p._id !== id));
+        getDeletedPosts();
       } catch (err) {
         console.log(err);
       }
+    }
+  };
+
+  const restorePost = async (id) => {
+    try {
+      await axios.put(`http://localhost:3000/skincare/restore/${id}`);
+      setDeletedPosts(deletedPosts.filter((p) => p._id !== id));
+      getPosts();
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -42,6 +67,7 @@ const SkincarePost = () => {
     setForm({
       name: post.name || "",
       duration: post.duration || "",
+      content: post.content || "",
       price: post.price || "",
       section: post.section || "",
       category: post.category || "",
@@ -60,7 +86,14 @@ const SkincarePost = () => {
       );
       setShowForm(false);
       setEditingPost(null);
-      setForm({ name: "", duration: "", price: "", section: "", category: "" });
+      setForm({
+        name: "",
+        duration: "",
+        content: "",
+        price: "",
+        section: "",
+        category: "",
+      });
     } catch (err) {
       console.log(err);
     }
@@ -74,7 +107,14 @@ const SkincarePost = () => {
       });
       setPosts([...posts, res.data.skincare]);
       setShowForm(false);
-      setForm({ name: "", duration: "", price: "", section: "", category: "" });
+      setForm({
+        name: "",
+        duration: "",
+        content: "",
+        price: "",
+        section: "",
+        category: "",
+      });
     } catch (err) {
       console.log(err);
     }
@@ -97,6 +137,12 @@ const SkincarePost = () => {
             placeholder="المدة"
             value={form.duration}
             onChange={(e) => setForm({ ...form, duration: e.target.value })}
+          />
+          <textarea
+            className="beauty-input"
+            placeholder="المحتوى الكامل"
+            value={form.content}
+            onChange={(e) => setForm({ ...form, content: e.target.value })}
           />
           <input
             className="beauty-input"
@@ -131,10 +177,29 @@ const SkincarePost = () => {
         </div>
       )}
 
+      <button
+        className="btn-add"
+        onClick={() => {
+          setEditingPost(null);
+          setForm({
+            name: "",
+            duration: "",
+            content: "",
+            price: "",
+            section: "",
+            category: "",
+          });
+          setShowForm(true);
+        }}
+      >
+        + إضافة خدمة
+      </button>
+
       <div className="beauty-cards-list">
         {posts.map((post) => (
           <div key={post._id} className="beauty-card">
             <h3>{post.name}</h3>
+            <p className="content">{post.content}</p>
             <p className="duration">{post.duration}</p>
             <p className="price">{post.price} €</p>
             <p className="section">{post.section}</p>
@@ -153,6 +218,40 @@ const SkincarePost = () => {
           </div>
         ))}
       </div>
+
+      <button
+        className="btn-cancel"
+        onClick={() => setShowDeleted(!showDeleted)}
+      >
+        {showDeleted ? "إخفاء المحذوفات" : "عرض المحذوفات"}
+      </button>
+
+      {showDeleted && (
+        <div className="beauty-cards-list">
+          <h3>المحذوفات</h3>
+          {deletedPosts.length === 0 && <p>لا يوجد عناصر محذوفة</p>}
+          {deletedPosts.map((post) => (
+            <div
+              key={post._id}
+              className="beauty-card"
+              style={{ opacity: 0.6 }}
+            >
+              <h3>{post.name}</h3>
+              <p className="content">{post.content}</p>
+              <p className="duration">{post.duration}</p>
+              <p className="price">{post.price} €</p>
+              <div className="beauty-card-buttons">
+                <button
+                  className="btn-edit"
+                  onClick={() => restorePost(post._id)}
+                >
+                  استرجاع ↩
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

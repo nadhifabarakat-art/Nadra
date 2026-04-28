@@ -32,17 +32,29 @@
   bottom: 50px;
   padding: 15px;
   border-radius: 12px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> b0c18a8526c48c08820861b2b133f9df9be66353
   background-color: #fff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b0c18a8526c48c08820861b2b133f9df9be66353
 .footer-contact a {
   text-decoration: none;
   color: #c9a66b;
   font-size: 14px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b0c18a8526c48c08820861b2b133f9df9be66353
 .footer-contact a:hover {
   opacity: 0.7;
 }

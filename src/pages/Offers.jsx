@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import "../style/offers.css";
 import Api from "../Api.jsx";
 import { Link } from "react-router-dom";
@@ -32,9 +31,10 @@ function Offers() {
               </ul>
             </div>
             <div className="offer-bottom">
-              <p>السعر القديم: {offer.oldPrice}€</p>
-              <p>السعر الجديد: {offer.newPrice}€</p>
+              <p className="old-price">السعر القديم: {offer.oldPrice}€</p>
+              <p className="new-price">السعر الجديد: {offer.newPrice}€</p>
             </div>
+
             <Link to="/contact">
               <button className="termine-button">احجز الآن</button>
             </Link>

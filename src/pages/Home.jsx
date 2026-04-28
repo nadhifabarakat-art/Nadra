@@ -2,7 +2,7 @@ import "../style/home.css";
 import axios from "axios";
 const Home = () => {
   return (
-    <>
+    
       <section className="home">
         <div className="home-content">
           <h1>أهلاً بك في مركز ندرا</h1>
@@ -14,7 +14,7 @@ const Home = () => {
           <p>اكتشف خدماتنا المتنوعة وتعرف أكثر على ما نقدمه لكم.</p>
         </div>
       </section>
-    </>
+    
   );
 };
 export default Home;

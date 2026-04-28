@@ -13,8 +13,8 @@ import LaserPost from "./admin/LaserPost.jsx";
 import SkincarePost from "./admin/SkincarePost.jsx";
 import OfferPost from "./admin/OfferPost.jsx";
 import Booking from "./admin/Booking.jsx";
-import AdminLogin from "./admin/AdminLogin.jsx";
-import ProtectedAdmin from "./admin/ProtectedAdmin.jsx";
+import Login from "./admin/Login.jsx"; // ✅ من admin
+import ProtectedRoute from "./admin/ProtectedRoute.jsx";
 import "./style/app.css";
 
 const App = () => {
@@ -27,7 +27,6 @@ const App = () => {
         <Route path="laser" element={<Laser />} />
         <Route path="skincare" element={<Skincare />} />
         <Route path="offers" element={<Offers />} />
-
         <Route path="beauty">
           <Route index element={<Beauty />} />
           <Route path="laser" element={<Laser />} />
@@ -36,20 +35,21 @@ const App = () => {
         </Route>
       </Route>
 
-      <Route path="/admin-login" element={<AdminLogin />} />
+      {/* ✅ صفحة اللوجين خارج الأدمن */}
+      <Route path="/admin/login" element={<Login />} />
 
       <Route
         path="admin"
         element={
-          <ProtectedAdmin>
+          <ProtectedRoute>
             <AdminLayout />
-          </ProtectedAdmin>
+          </ProtectedRoute>
         }
       >
         <Route index element={<Dashboard />} />
         <Route path="laser" element={<LaserPost />} />
         <Route path="skincare" element={<SkincarePost />} />
-        <Route path="offer" element={<OfferPost />} />
+        <Route path="Offer" element={<OfferPost />} />
         <Route path="booking" element={<Booking />} />
       </Route>
     </Routes>
