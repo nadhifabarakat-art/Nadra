@@ -14,14 +14,17 @@ const Booking = () => {
         console.log(err);
       }
     };
+
     getBookings();
   }, []);
-
-  const deleteBooking = (id) => {
+  const deleteBooking = async (id) => {
     if (window.confirm("متأكدة تحذفي؟")) {
-      const updated = bookings.filter((b) => b.id !== id);
-      setBookings(updated);
-      localStorage.setItem("bookings", JSON.stringify(updated));
+      try {
+        await axios.delete(`http://localhost:3000/contact/${id}`);
+        setBookings(bookings.filter((p) => p._id !== id));
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -33,15 +36,15 @@ const Booking = () => {
         <p className="no-bookings">لا يوجد حجوزات بعد</p>
       ) : (
         bookings.map((b) => (
-          <div key={b.id} className="booking-card">
+          <div key={b._id} className="booking-card">
             <p>
-               <strong>{b.name}</strong>
+              <strong>{b.name}</strong>
             </p>
             <p> {b.phone}</p>
             <p> {b.email}</p>
             <p> {b.session}</p>
             <p> {b.date}</p>
-            <button className="btn-delete" onClick={() => deleteBooking(b.id)}>
+            <button className="btn-delete" onClick={() => deleteBooking(b._id)}>
               حذف
             </button>
           </div>

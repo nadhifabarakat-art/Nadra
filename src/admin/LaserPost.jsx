@@ -4,35 +4,60 @@ import "./style/sidebar.css";
 
 const LaserPost = () => {
   const [posts, setPosts] = useState([]);
+  const [deletedPosts, setDeletedPosts] = useState([]);
+  const [showDeleted, setShowDeleted] = useState(false);
   const [editingPost, setEditingPost] = useState(null);
   const [form, setForm] = useState({
     title: "",
     shortContent: "",
     content: "",
     price: "",
+    image: "",
   });
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    const getPosts = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/laser/");
-        setPosts(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     getPosts();
+    getDeletedPosts();
   }, []);
+
+  const getPosts = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/laser/");
+      setPosts(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getDeletedPosts = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/laser/deleted");
+      setDeletedPosts(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const deletePost = async (id) => {
     if (window.confirm("متأكدة تحذفي؟")) {
       try {
         await axios.delete(`http://localhost:3000/laser/${id}`);
         setPosts(posts.filter((p) => p._id !== id));
+        getDeletedPosts();
       } catch (err) {
         console.log(err);
       }
+    }
+  };
+
+  const restorePost = async (id) => {
+    try {
+      await axios.put(`http://localhost:3000/laser/restore/${id}`);
+      setDeletedPosts(deletedPosts.filter((p) => p._id !== id));
+      getPosts();
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -43,6 +68,7 @@ const LaserPost = () => {
       shortContent: post.shortContent || "",
       content: post.content || "",
       price: post.price || "",
+      image: post.image || "",
     });
     setShowForm(true);
   };
@@ -53,9 +79,7 @@ const LaserPost = () => {
         ...form,
         price: Number(form.price),
       });
-      setPosts(
-        posts.map((p) => (p._id === editingPost ? { ...p, ...form } : p)),
-      );
+      await getPosts();
       setShowForm(false);
       setEditingPost(null);
       setForm({
@@ -63,6 +87,7 @@ const LaserPost = () => {
         shortContent: "",
         content: "",
         price: "",
+        image: "",
       });
     } catch (err) {
       console.log(err);
@@ -71,17 +96,18 @@ const LaserPost = () => {
 
   const addPost = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/laser/", {
+      await axios.post("http://localhost:3000/laser/", {
         ...form,
         price: Number(form.price),
       });
-      setPosts([...posts, res.data.laser]);
+      await getPosts(); // ✅
       setShowForm(false);
       setForm({
         title: "",
         shortContent: "",
         content: "",
         price: "",
+        image: "",
       });
     } catch (err) {
       console.log(err);
@@ -114,12 +140,17 @@ const LaserPost = () => {
           />
           <input
             className="beauty-input"
-            placeholder=""
+            placeholder="السعر"
             type="number"
             value={form.price}
             onChange={(e) => setForm({ ...form, price: e.target.value })}
           />
-
+          <input
+            className="beauty-input"
+            placeholder="رابط الصورة (اختياري)"
+            value={form.image}
+            onChange={(e) => setForm({ ...form, image: e.target.value })}
+          />
           <div className="beauty-form-buttons">
             <button
               className="btn-save"
@@ -134,11 +165,27 @@ const LaserPost = () => {
         </div>
       )}
 
+      <button
+        className="btn-add"
+        onClick={() => {
+          setEditingPost(null);
+          setForm({
+            title: "",
+            shortContent: "",
+            content: "",
+            price: "",
+            image: "",
+          });
+          setShowForm(true);
+        }}
+      >
+        + إضافة خدمة
+      </button>
+
       <div className="beauty-cards-list">
         {posts.map((post) => (
           <div key={post._id} className="beauty-card">
             <h3>{post.title}</h3>
-
             <p className="short-content">{post.shortContent}</p>
             <p className="content">{post.content}</p>
             <p className="price">{post.price} €</p>
@@ -156,6 +203,39 @@ const LaserPost = () => {
           </div>
         ))}
       </div>
+
+      <button
+        className="btn-cancel"
+        onClick={() => setShowDeleted(!showDeleted)}
+      >
+        {showDeleted ? "إخفاء المحذوفات" : "عرض المحذوفات"}
+      </button>
+
+      {showDeleted && (
+        <div className="beauty-cards-list">
+          <h3>المحذوفات</h3>
+          {deletedPosts.length === 0 && <p>لا يوجد عناصر محذوفة</p>}
+          {deletedPosts.map((post) => (
+            <div
+              key={post._id}
+              className="beauty-card"
+              style={{ opacity: 0.6 }}
+            >
+              <h3>{post.title}</h3>
+              <p className="short-content">{post.shortContent}</p>
+              <p className="price">{post.price} €</p>
+              <div className="beauty-card-buttons">
+                <button
+                  className="btn-edit"
+                  onClick={() => restorePost(post._id)}
+                >
+                  استرجاع ↩️
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
