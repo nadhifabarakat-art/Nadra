@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import "../style/laser.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Api from "../Api.jsx";
+
 const Laser = () => {
   const [laser, setLaser] = useState([]);
+
   const getLaser = async () => {
     try {
       const res = await Api.get("/laser");
@@ -13,9 +14,11 @@ const Laser = () => {
       console.log(err);
     }
   };
+
   useEffect(() => {
     getLaser();
   }, []);
+
   return (
     <>
       <section className="Laser">
@@ -37,4 +40,5 @@ const Laser = () => {
     </>
   );
 };
+
 export default Laser;
