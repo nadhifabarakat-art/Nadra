@@ -192,7 +192,7 @@ const SkincarePost = () => {
           setShowForm(true);
         }}
       >
-        + إضافة خدمة
+         إضافة خدمة
       </button>
 
       <div className="beauty-cards-list">
@@ -245,7 +245,7 @@ const SkincarePost = () => {
                   className="btn-edit"
                   onClick={() => restorePost(post._id)}
                 >
-                  استرجاع ↩
+                  استرجاع 
                 </button>
               </div>
             </div>

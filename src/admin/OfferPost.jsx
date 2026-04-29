@@ -120,10 +120,10 @@ const OfferPost = () => {
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
-          {/* الجلسات مفصولة بفاصلة */}
+          
           <input
             className="beauty-input"
-            placeholder="الجلسات (مفصولة بفاصلة)"
+            placeholder="الجلسات"
             value={form.sessions}
             onChange={(e) => setForm({ ...form, sessions: e.target.value })}
           />
@@ -175,7 +175,7 @@ const OfferPost = () => {
           setShowForm(true);
         }}
       >
-        + إضافة عرض
+         إضافة عرض
       </button>
 
       <div className="beauty-cards-list">
@@ -246,7 +246,7 @@ const OfferPost = () => {
                   className="btn-edit"
                   onClick={() => restorePost(post._id)}
                 >
-                  استرجاع ↩
+                  استرجاع 
                 </button>
               </div>
             </div>

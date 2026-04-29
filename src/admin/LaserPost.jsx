@@ -100,7 +100,7 @@ const LaserPost = () => {
         ...form,
         price: Number(form.price),
       });
-      await getPosts(); // ✅
+      await getPosts(); 
       setShowForm(false);
       setForm({
         title: "",
@@ -147,7 +147,7 @@ const LaserPost = () => {
           />
           <input
             className="beauty-input"
-            placeholder="رابط الصورة (اختياري)"
+            placeholder="رابط الصورة"
             value={form.image}
             onChange={(e) => setForm({ ...form, image: e.target.value })}
           />
@@ -179,7 +179,7 @@ const LaserPost = () => {
           setShowForm(true);
         }}
       >
-        + إضافة خدمة
+         إضافة خدمة
       </button>
 
       <div className="beauty-cards-list">
@@ -229,7 +229,7 @@ const LaserPost = () => {
                   className="btn-edit"
                   onClick={() => restorePost(post._id)}
                 >
-                  استرجاع ↩️
+                  استرجاع ↩
                 </button>
               </div>
             </div>
