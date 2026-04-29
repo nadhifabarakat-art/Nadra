@@ -1,0 +1,75 @@
+[
+  {
+    "id": 1,
+    "name": "تنظيف عميق + تقشير كيميائي",
+    "sessions": ["تنظيف بشرة عميق", "تقشير كيميائي"],
+    "oldPrice": 100,
+    "newPrice": 80,
+    "type": "skincare"
+  },
+  {
+    "id": 2,
+    "name": "هيدرافيشل + ماسك ذهبي",
+    "sessions": ["هيدرافيشل", "ماسك ذهبي"],
+    "oldPrice": 120,
+    "newPrice": 95,
+    "type": "skincare"
+  },
+  {
+    "id": 3,
+    "name": "تقشير كريستالي + بلازما",
+    "sessions": ["تقشير كريستالي", "بلازما"],
+    "oldPrice": 110,
+    "newPrice": 85,
+    "type": "skincare"
+  },
+  {
+    "id": 4,
+    "name": "ميزوثيرابي + ديرما بن",
+    "sessions": ["ميزوثيرابي", "ديرما بن"],
+    "oldPrice": 130,
+    "newPrice": 100,
+    "type": "skincare"
+  },
+  {
+    "id": 5,
+    "name": "تفتيح بشرة + تنظيف",
+    "sessions": ["تفتيح بشرة", "تنظيف بشرة"],
+    "oldPrice": 90,
+    "newPrice": 70,
+    "type": "skincare"
+  },
+  {
+    "id": 6,
+    "name": "ليزر يدين + أقدام",
+    "sessions": ["ليزر يدين", "ليزر أقدام"],
+    "oldPrice": 80,
+    "newPrice": 50,
+    "type": "laser"
+  },
+  {
+    "id": 7,
+    "name": "ليزر وجه + رقبة",
+    "sessions": ["ليزر وجه", "ليزر رقبة"],
+    "oldPrice": 100,
+    "newPrice": 70,
+    "type": "laser"
+  },
+  {
+    "id": 8,
+    "name": "ليزر جسم كامل",
+    "sessions": ["ليزر جسم كامل"],
+    "oldPrice": 200,
+    "newPrice": 150,
+    "type": "laser"
+  },
+
+  {
+    "id": 9,
+    "name": "ليزر ساقين + يدين",
+    "sessions": ["ليزر ساقين", "ليزر يدين"],
+    "oldPrice": 120,
+    "newPrice": 85,
+    "type": "laser"
+  }
+]
