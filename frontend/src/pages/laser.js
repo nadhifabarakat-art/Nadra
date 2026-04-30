@@ -1,7 +1,7 @@
 const laser = [
   {
     id: 1,
-    url: "https://your-backend.onrender.com/ganzkoerper.png",
+    url: "https://nadra-kr80.onrender.com/images/ganzkoerper.png",
     title: "إزالة الشعر بالليزر لكامل الجسم",
     shortContent: "تقنية ليزر حديثة وفعّالة تمنحك نعومة مثالية لكامل الجسم.",
     content:
@@ -10,7 +10,7 @@ const laser = [
   },
   {
     id: 2,
-    url: "https://your-backend.onrender.com/frauen.png",
+    url: "https://nadra-kr80.onrender.com/images/frauen.png",
     title: "إزالة الشعر بالليزر للنساء",
     shortContent: "عناية متطورة بالليزر تمنحك بشرة ناعمة ومتألقة بإشراقة واضحة",
     content:
@@ -19,7 +19,7 @@ const laser = [
   },
   {
     id: 3,
-    url: "https://your-backend.onrender.com/männer.png",
+    url: "https://nadra-kr80.onrender.com/images/männer.png",
     title: "إزالة الشعر بالليزر للرجال",
     shortContent: "رياضي، أنيق، أفضل بشكل واضح – مع الليزر.",
     content:
@@ -29,6 +29,7 @@ const laser = [
   {
     id: 4,
     url: "https://your-backend.onrender.com/laer.jpg",
+    url: "/laer.jpg",
     title: "إزالة الشعر بالليزر للذراعين والساقين",
     shortContent: "نعومة مثالية لليدين والساقين مع نتائج تدوم طويلاً.",
     content:
