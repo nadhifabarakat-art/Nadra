@@ -91,7 +91,7 @@ const SkincarePost = () => {
     });
     setShowForm(true);
   };
-  E;
+
   const savePost = async () => {
     try {
       await axios.put(
