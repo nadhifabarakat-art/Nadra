@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./style/sidebar.css";
 
-
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
@@ -11,7 +10,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/auth/login", form);
+      const res = await axios.post("https://nadra-kr80.onrender.com", form);
       localStorage.setItem("token", res.data.token);
       navigate("/admin");
     } catch (err) {

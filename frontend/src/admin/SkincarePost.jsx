@@ -24,7 +24,7 @@ const SkincarePost = () => {
 
   const getPosts = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/skincare/");
+      const res = await axios.get("https://nadra-kr80.onrender.com");
       setPosts(res.data);
     } catch (err) {
       console.log(err);
@@ -33,7 +33,7 @@ const SkincarePost = () => {
 
   const getDeletedPosts = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/skincare/deleted");
+      const res = await axios.get("https://nadra-kr80.onrender.com");
       setDeletedPosts(res.data);
     } catch (err) {
       console.log(err);
@@ -43,7 +43,7 @@ const SkincarePost = () => {
   const deletePost = async (id) => {
     if (window.confirm("متأكدة تحذفي؟")) {
       try {
-        await axios.delete(`http://localhost:3000/skincare/${id}`);
+        await axios.delete(`https://nadra-kr80.onrender.com/${id}`);
         setPosts(posts.filter((p) => p._id !== id));
         getDeletedPosts();
       } catch (err) {
@@ -54,7 +54,7 @@ const SkincarePost = () => {
 
   const restorePost = async (id) => {
     try {
-      await axios.put(`http://localhost:3000/skincare/restore/${id}`);
+      await axios.put(`https://nadra-kr80.onrender.com/${id}`);
       setDeletedPosts(deletedPosts.filter((p) => p._id !== id));
       getPosts();
     } catch (err) {
@@ -77,7 +77,7 @@ const SkincarePost = () => {
 
   const savePost = async () => {
     try {
-      await axios.put(`http://localhost:3000/skincare/${editingPost}`, {
+      await axios.put(`https://nadra-kr80.onrender.com/${editingPost}`, {
         ...form,
         price: Number(form.price),
       });
@@ -101,7 +101,7 @@ const SkincarePost = () => {
 
   const addPost = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/skincare/", {
+      const res = await axios.post("https://nadra-kr80.onrender.com/", {
         ...form,
         price: Number(form.price),
       });
@@ -192,7 +192,7 @@ const SkincarePost = () => {
           setShowForm(true);
         }}
       >
-         إضافة خدمة
+        إضافة خدمة
       </button>
 
       <div className="beauty-cards-list">
@@ -245,7 +245,7 @@ const SkincarePost = () => {
                   className="btn-edit"
                   onClick={() => restorePost(post._id)}
                 >
-                  استرجاع 
+                  استرجاع
                 </button>
               </div>
             </div>

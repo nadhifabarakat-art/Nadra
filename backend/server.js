@@ -17,8 +17,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === "production" ? "*" : "http://localhost:5173",
+    origin: process.env.NODE_ENV === "production" ? "*" : "*",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
