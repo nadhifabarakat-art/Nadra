@@ -7,6 +7,8 @@ const SkincarePost = () => {
   const [deletedPosts, setDeletedPosts] = useState([]);
   const [showDeleted, setShowDeleted] = useState(false);
   const [editingPost, setEditingPost] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+
   const [form, setForm] = useState({
     name: "",
     duration: "",
@@ -15,35 +17,49 @@ const SkincarePost = () => {
     section: "",
     category: "",
   });
-  const [showForm, setShowForm] = useState(false);
+
+  const getPosts = async () => {
+    try {
+      const res = await axios.get("https://nadra-kr80.onrender.com/skincare/");
+
+      const data = Array.isArray(res.data)
+        ? res.data
+        : res.data.data || res.data.result || [];
+
+      setPosts(data);
+    } catch (err) {
+      console.log(err);
+      setPosts([]);
+    }
+  };
+
+  const getDeletedPosts = async () => {
+    try {
+      const res = await axios.get(
+        "https://nadra-kr80.onrender.com/skincare/deleted",
+      );
+
+      const data = Array.isArray(res.data)
+        ? res.data
+        : res.data.data || res.data.result || [];
+
+      setDeletedPosts(data);
+    } catch (err) {
+      console.log(err);
+      setDeletedPosts([]);
+    }
+  };
 
   useEffect(() => {
     getPosts();
     getDeletedPosts();
   }, []);
 
-  const getPosts = async () => {
-    try {
-      const res = await axios.get("https://nadra-kr80.onrender.com");
-      setPosts(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getDeletedPosts = async () => {
-    try {
-      const res = await axios.get("https://nadra-kr80.onrender.com");
-      setDeletedPosts(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const deletePost = async (id) => {
     if (window.confirm("متأكدة تحذفي؟")) {
       try {
-        await axios.delete(`https://nadra-kr80.onrender.com/${id}`);
+        await axios.delete(`https://nadra-kr80.onrender.com/skincare/${id}`);
+
         setPosts(posts.filter((p) => p._id !== id));
         getDeletedPosts();
       } catch (err) {
@@ -54,7 +70,8 @@ const SkincarePost = () => {
 
   const restorePost = async (id) => {
     try {
-      await axios.put(`https://nadra-kr80.onrender.com/${id}`);
+      await axios.put(`https://nadra-kr80.onrender.com/skincare/restore/${id}`);
+
       setDeletedPosts(deletedPosts.filter((p) => p._id !== id));
       getPosts();
     } catch (err) {
@@ -74,26 +91,20 @@ const SkincarePost = () => {
     });
     setShowForm(true);
   };
-
+  E;
   const savePost = async () => {
     try {
-      await axios.put(`https://nadra-kr80.onrender.com/${editingPost}`, {
-        ...form,
-        price: Number(form.price),
-      });
-      setPosts(
-        posts.map((p) => (p._id === editingPost ? { ...p, ...form } : p)),
+      await axios.put(
+        `https://nadra-kr80.onrender.com/skincare/${editingPost}`,
+        {
+          ...form,
+          price: Number(form.price),
+        },
       );
+
+      await getPosts();
       setShowForm(false);
       setEditingPost(null);
-      setForm({
-        name: "",
-        duration: "",
-        content: "",
-        price: "",
-        section: "",
-        category: "",
-      });
     } catch (err) {
       console.log(err);
     }
@@ -101,20 +112,13 @@ const SkincarePost = () => {
 
   const addPost = async () => {
     try {
-      const res = await axios.post("https://nadra-kr80.onrender.com/", {
+      await axios.post("https://nadra-kr80.onrender.com/skincare/", {
         ...form,
         price: Number(form.price),
       });
-      setPosts([...posts, res.data.skincare]);
+
+      await getPosts();
       setShowForm(false);
-      setForm({
-        name: "",
-        duration: "",
-        content: "",
-        price: "",
-        section: "",
-        category: "",
-      });
     } catch (err) {
       console.log(err);
     }
@@ -127,129 +131,91 @@ const SkincarePost = () => {
       {showForm && (
         <div className="beauty-form">
           <input
-            className="beauty-input"
             placeholder="الاسم"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
+
           <input
-            className="beauty-input"
             placeholder="المدة"
             value={form.duration}
             onChange={(e) => setForm({ ...form, duration: e.target.value })}
           />
+
           <textarea
-            className="beauty-input"
-            placeholder="المحتوى الكامل"
+            placeholder="المحتوى"
             value={form.content}
             onChange={(e) => setForm({ ...form, content: e.target.value })}
           />
+
           <input
-            className="beauty-input"
-            placeholder="السعر"
             type="number"
+            placeholder="السعر"
             value={form.price}
             onChange={(e) => setForm({ ...form, price: e.target.value })}
           />
+
           <input
-            className="beauty-input"
             placeholder="القسم"
             value={form.section}
             onChange={(e) => setForm({ ...form, section: e.target.value })}
           />
+
           <input
-            className="beauty-input"
             placeholder="الفئة"
             value={form.category}
             onChange={(e) => setForm({ ...form, category: e.target.value })}
           />
-          <div className="beauty-form-buttons">
-            <button
-              className="btn-save"
-              onClick={editingPost ? savePost : addPost}
-            >
-              حفظ
-            </button>
-            <button className="btn-cancel" onClick={() => setShowForm(false)}>
-              إلغاء
-            </button>
-          </div>
+
+          <button onClick={editingPost ? savePost : addPost}>حفظ</button>
+
+          <button onClick={() => setShowForm(false)}>إلغاء</button>
         </div>
       )}
 
       <button
-        className="btn-add"
         onClick={() => {
           setEditingPost(null);
-          setForm({
-            name: "",
-            duration: "",
-            content: "",
-            price: "",
-            section: "",
-            category: "",
-          });
           setShowForm(true);
         }}
       >
         إضافة خدمة
       </button>
 
-      <div className="beauty-cards-list">
-        {posts.map((post) => (
-          <div key={post._id} className="beauty-card">
-            <h3>{post.name}</h3>
-            <p className="content">{post.content}</p>
-            <p className="duration">{post.duration}</p>
-            <p className="price">{post.price} €</p>
-            <p className="section">{post.section}</p>
-            <p className="category">{post.category}</p>
-            <div className="beauty-card-buttons">
-              <button className="btn-edit" onClick={() => startEdit(post)}>
-                تعديل
-              </button>
-              <button
-                className="btn-delete"
-                onClick={() => deletePost(post._id)}
-              >
-                حذف
-              </button>
+      <div>
+        {Array.isArray(posts) &&
+          posts.map((post) => (
+            <div key={post._id}>
+              <h3>{post.name}</h3>
+              <p>{post.content}</p>
+              <p>{post.duration}</p>
+              <p>{post.price} €</p>
+              <p>{post.section}</p>
+              <p>{post.category}</p>
+
+              <button onClick={() => startEdit(post)}>تعديل</button>
+
+              <button onClick={() => deletePost(post._id)}>حذف</button>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
 
-      <button
-        className="btn-cancel"
-        onClick={() => setShowDeleted(!showDeleted)}
-      >
-        {showDeleted ? "إخفاء المحذوفات" : "عرض المحذوفات"}
+      <button onClick={() => setShowDeleted(!showDeleted)}>
+        {showDeleted ? "إخفاء" : "عرض المحذوفات"}
       </button>
 
       {showDeleted && (
-        <div className="beauty-cards-list">
-          <h3>المحذوفات</h3>
-          {deletedPosts.length === 0 && <p>لا يوجد عناصر محذوفة</p>}
-          {deletedPosts.map((post) => (
-            <div
-              key={post._id}
-              className="beauty-card"
-              style={{ opacity: 0.6 }}
-            >
-              <h3>{post.name}</h3>
-              <p className="content">{post.content}</p>
-              <p className="duration">{post.duration}</p>
-              <p className="price">{post.price} €</p>
-              <div className="beauty-card-buttons">
-                <button
-                  className="btn-edit"
-                  onClick={() => restorePost(post._id)}
-                >
-                  استرجاع
-                </button>
+        <div>
+          {deletedPosts.length === 0 && <p>لا يوجد محذوفات</p>}
+
+          {Array.isArray(deletedPosts) &&
+            deletedPosts.map((post) => (
+              <div key={post._id} style={{ opacity: 0.5 }}>
+                <h3>{post.name}</h3>
+
+                <button onClick={() => restorePost(post._id)}>استرجاع</button>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       )}
     </div>
