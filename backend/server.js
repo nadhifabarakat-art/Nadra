@@ -39,10 +39,9 @@ app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-app.use((req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });
-
 connectDB();
 
 const PORT = process.env.PORT || 3000;
