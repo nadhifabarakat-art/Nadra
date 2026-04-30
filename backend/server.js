@@ -24,7 +24,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
-
 app.use("/skincare", skincareRoutes);
 app.use("/offers", offersRoutes);
 app.use("/laser", laserRoutes);
@@ -32,10 +31,10 @@ app.use("/contact", contactRoutes);
 app.use("/auth", authRoutes);
 
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
-app.get("*", (req, res) => {
+
+app.get(/^(?!\/api).*/, (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });
-
 connectDB();
 
 const PORT = process.env.PORT || 3000;
