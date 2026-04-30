@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./style/sidebar.css";
+
 const Dashboard = () => {
   const [laserCount, setLaserCount] = useState(0);
   const [skincareCount, setSkincareCount] = useState(0);
   const [offersCount, setOffersCount] = useState(0);
-  const [bookingCount, setBookingCount] = useState(0);
+
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const laser = await axios.get("http://localhost:3000/laser/");
+        const laser = await axios.get("https://nadra-kr80.onrender.com/laser/");
         setLaserCount(laser.data.length);
-        const skincare = await axios.get("http://localhost:3000/skincare/");
+
+        const skincare = await axios.get(
+          "https://nadra-kr80.onrender.com/skincare/",
+        );
         setSkincareCount(skincare.data.length);
-        const offers = await axios.get("http://localhost:3000/offers/");
+
+        const offers = await axios.get(
+          "https://nadra-kr80.onrender.com/offers/",
+        );
         setOffersCount(offers.data.length);
       } catch (err) {
         console.log(err);
@@ -21,6 +28,7 @@ const Dashboard = () => {
     };
     fetchCounts();
   }, []);
+
   const cards = [
     {
       title: "Laser Posts",
@@ -38,6 +46,7 @@ const Dashboard = () => {
       desc: "عدد العروض والتخفيضات المتاحة حالياً",
     },
   ];
+
   return (
     <div className="dashboard-container">
       <h1 className="dashboard-title">Welcome To Dashboard</h1>
@@ -53,4 +62,5 @@ const Dashboard = () => {
     </div>
   );
 };
+
 export default Dashboard;
