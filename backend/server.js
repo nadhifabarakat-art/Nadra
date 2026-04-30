@@ -8,6 +8,7 @@ import offersRoutes from "./routes/offersRoutes.js";
 import laserRoutes from "./routes/laserRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import { login } from "./controllers/authControllers.js";
 import connectDB from "./config/db.js";
 
 const app = express();
@@ -28,6 +29,7 @@ app.use("/offers", offersRoutes);
 app.use("/laser", laserRoutes);
 app.use("/contact", contactRoutes);
 app.use("/auth", authRoutes);
+app.post("/login", login);
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
