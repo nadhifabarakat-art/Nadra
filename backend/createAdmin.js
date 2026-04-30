@@ -13,6 +13,10 @@ const createAdmin = async () => {
     email: "Nadhifabarakat@gmail.com",
     password: hash,
   });
+  await User.create({
+    email: "sidraatik2021@gmail.com",
+    password: hash,
+  });
 
   console.log("Admin created successfully!");
   process.exit();
