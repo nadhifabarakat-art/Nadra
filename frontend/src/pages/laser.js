@@ -1,7 +1,7 @@
 const laser = [
   {
     id: 1,
-    url: "https://nadra-kr80.onrender.com/images/ganzkoerper.png",
+    url: "https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/ganzkoerper_vjql8a",
     title: "إزالة الشعر بالليزر لكامل الجسم",
     shortContent: "تقنية ليزر حديثة وفعّالة تمنحك نعومة مثالية لكامل الجسم.",
     content:
