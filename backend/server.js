@@ -1,19 +1,24 @@
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
+import path from "path";
+import { fileURLToPath } from "url";
 import skincareRoutes from "./routes/skincareRoutes.js";
 import offersRoutes from "./routes/offersRoutes.js";
 import laserRoutes from "./routes/laserRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
-import authRoutes from "./routes/authRoutes.js"; // ✅
+import authRoutes from "./routes/authRoutes.js";
 import connectDB from "./config/db.js";
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin:
+      process.env.NODE_ENV === "production" ? "*" : "http://localhost:5173",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -24,7 +29,12 @@ app.use("/skincare", skincareRoutes);
 app.use("/offers", offersRoutes);
 app.use("/laser", laserRoutes);
 app.use("/contact", contactRoutes);
-app.use("/auth", authRoutes); // ✅
+app.use("/auth", authRoutes);
+
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
 
 connectDB();
 
