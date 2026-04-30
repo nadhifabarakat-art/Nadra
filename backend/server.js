@@ -28,7 +28,7 @@ app.use("/offers", offersRoutes);
 app.use("/laser", laserRoutes);
 app.use("/contact", contactRoutes);
 app.use("/auth", authRoutes);
-
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
 app.get(/^(?!\/api).*/, (req, res) => {
