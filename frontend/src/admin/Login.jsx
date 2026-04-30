@@ -10,7 +10,10 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("https://nadra-kr80.onrender.com", form);
+      const res = await axios.post(
+        "https://nadra-kr80.onrender.com/login",
+        form,
+      );
       localStorage.setItem("token", res.data.token);
       navigate("/admin");
     } catch (err) {

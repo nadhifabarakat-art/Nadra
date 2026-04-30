@@ -6,7 +6,7 @@ const Booking = () => {
   useEffect(() => {
     const getBookings = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/contact/");
+        const res = await axios.get("https://nadra-kr80.onrender.com/contact/");
         setBookings(res.data);
       } catch (err) {
         console.log(err);
@@ -17,7 +17,7 @@ const Booking = () => {
   const deleteBooking = async (id) => {
     if (window.confirm("متأكدة تحذفي؟")) {
       try {
-        await axios.delete(`http://localhost:3000/contact/${id}`);
+        await axios.delete(`https://nadra-kr80.onrender.com/Booking/${id}`);
         setBookings(bookings.filter((p) => p._id !== id));
       } catch (err) {
         console.log(err);
