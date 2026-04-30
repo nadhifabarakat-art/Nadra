@@ -25,7 +25,11 @@ const Laser = () => {
         {laser.map((item) => (
           <div key={item._id || item.id} className="laser-card">
             <img
-              src={`https://res.cloudinary.com/djy0btncz/image/upload/${item.url}`}
+              src={
+                item.url?.startsWith("http")
+                  ? item.url
+                  : `https://res.cloudinary.com/djy0btncz/image/upload/${item.url}`
+              }
               alt={item.title}
             />
             <div className="Laser-content">
